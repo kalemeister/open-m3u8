@@ -84,13 +84,7 @@ final class Constants {
     public static final String NO = "NO";
     private static final String INTEGER_REGEX = "\\d+";
     private static final String SIGNED_FLOAT_REGEX = "-?\\d*\\.?\\d*";
-    // TIMESTAMP_REGEX accepts time strings of format:
-    // 1970-01-01T00:00:00
-    // 1970-01-01T00:00:00Z
-    // 1970-01-01T00:00:00.000
-    // 1970-01-01T00:00:00+00:00
-    // 1970-01-01T00:00:00.000+00:00
-    private static final String TIMESTAMP_REGEX = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z?(\\.\\d{3})?(\\+\\d{2}:\\d{2})?";
+    private static final String TIMESTAMP_REGEX = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{3})?(?:Z?|\\+\\d{2}:\\d{2})?";
 
     public static final Pattern HEXADECIMAL_PATTERN = Pattern.compile("^0[x|X]([0-9A-F]+)$");
     public static final Pattern RESOLUTION_PATTERN = Pattern.compile("^(" + INTEGER_REGEX + ")x(" + INTEGER_REGEX + ")$");
