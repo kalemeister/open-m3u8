@@ -271,6 +271,24 @@ class MasterPlaylistLineParser implements LineParser {
             state.getMaster().streamInfo = builder.build();
         }
     };
+    
+    static final IExtTagParser EXT_X_INDEPENDENT_SEGMENTS = new IExtTagParser() {
+        private final LineParser mLineParser = new MasterPlaylistLineParser(this);
+        private final Map<String, AttributeParser<StreamInfo.Builder>> HANDLERS = makeExtStreamInfHandlers(getTag());
+
+        @Override
+        public String getTag() {
+            return Constants.EXT_X_INDEPENDENT_SEGMENTS;
+        }
+
+        @Override
+        public boolean hasData() {
+            return false;
+        }
+
+        @Override
+        public void parse(String line, ParseState state) throws ParseException { }
+    };
 
     static <T extends StreamInfoBuilder> Map<String, AttributeParser<T>> makeExtStreamInfHandlers(final String tag) {
         final Map<String, AttributeParser<T>> handlers = new HashMap<>();
